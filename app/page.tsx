@@ -12,13 +12,11 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState<
-    "success" | "error" | ""
-  >("");
+  const [messageType, setMessageType] = useState<"success" | "error" | "">(
+    ""
+  );
 
-  async function handleSubmit(
-    event: FormEvent<HTMLFormElement>
-  ) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     setMessage("");
@@ -66,16 +64,11 @@ export default function Home() {
       setBusiness("");
       setNeed("");
 
-      setMessage(
-        "Your request has been submitted successfully."
-      );
+      setMessage("Your request has been submitted successfully.");
       setMessageType("success");
     } catch (error) {
       console.error("Firebase error:", error);
-
-      setMessage(
-        "Something went wrong. Please try again."
-      );
+      setMessage("Something went wrong. Please try again.");
       setMessageType("error");
     } finally {
       setLoading(false);
@@ -83,718 +76,682 @@ export default function Home() {
   }
 
   return (
-    <main className="page">
-      <div className="background-orb orb-one" />
-      <div className="background-orb orb-two" />
+    <main className="site">
 
-      {/* NAVBAR */}
+      {/* ================= NAVBAR ================= */}
 
-      <nav className="navbar">
-        <div className="logo">
-          <div className="logo-icon">✦</div>
-          LeadStudio
+      <header className="navbar">
+        <div className="nav-container">
+
+          <a href="/" className="brand">
+            LeadStudio
+          </a>
+
+          <a href="#request" className="nav-button">
+            Get Started
+          </a>
+
         </div>
+      </header>
 
-        <div className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#features">Features</a>
-          <a href="#process">How it works</a>
-        </div>
 
-        <a
-          href="#contact"
-          className="nav-button"
-        >
-          Submit Request
-        </a>
-      </nav>
+      {/* ================= HERO ================= */}
 
-      {/* HERO */}
+      <section className="hero">
+        <div className="container hero-grid">
 
-      <section className="hero" id="home">
-        <div className="hero-content">
+          <div className="hero-content">
 
-          <div className="top-pill">
-            <span className="live-dot" />
-            Professional websites for growing businesses
-          </div>
-
-          <h1>
-            Turn your business
-            <br />
-            into a{" "}
-            <span className="gradient-text">
-              professional
-            </span>
-            <br />
-            website.
-          </h1>
-
-          <p className="hero-description">
-            Get a modern, mobile-friendly website designed
-            for your business — starting at just ₹3000.
-            Simple, professional and built to help you
-            look trustworthy online.
-          </p>
-
-          <div className="hero-checks">
-            <div>
-              <span>✓</span>
-              Modern & clean design
+            <div className="eyebrow">
+              Professional websites for growing businesses
             </div>
 
-            <div>
-              <span>✓</span>
-              Mobile responsive
+            <h1>
+              Turn your business into a
+              <span> professional website.</span>
+            </h1>
+
+            <p className="hero-description">
+              Get a clean, modern and mobile-friendly website designed
+              specifically for your business without spending a huge amount.
+            </p>
+
+            <div className="hero-actions">
+
+              <a href="#request" className="primary-button">
+                Start Your Website
+              </a>
+
+              <div className="price-text">
+                Starting at <strong>₹3000</strong>
+              </div>
+
             </div>
 
-            <div>
-              <span>✓</span>
-              Fast loading
-            </div>
+            <div className="trust-points">
 
-            <div>
-              <span>✓</span>
-              Professional appearance
-            </div>
-          </div>
-
-          <div className="price-card">
-            <div>
-              <small>WEBSITE STARTING AT</small>
-
-              <strong>₹3000</strong>
-            </div>
-
-            <a href="#contact">
-              Submit Request
-              <b>→</b>
-            </a>
-          </div>
-
-          <div className="mini-trust">
-            <div className="trust-icon">
-              ✓
-            </div>
-
-            <div>
-              <strong>
-                Simple & transparent
-              </strong>
-
-              <span>
-                No complicated packages
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* FORM */}
-
-        <div
-          className="form-wrapper"
-          id="contact"
-        >
-          <div className="form-glow" />
-
-          <div className="form-card">
-
-            <div className="form-top">
-              <div className="form-icon">
-                ✦
+              <div>
+                <span>✓</span>
+                Mobile Friendly
               </div>
 
               <div>
-                <span className="form-label">
-                  GET STARTED
-                </span>
-
-                <h2>
-                  Tell us about your business.
-                </h2>
-              </div>
-
-              <div className="secure-badge">
                 <span>✓</span>
-                Secure
+                Clean Design
               </div>
+
+              <div>
+                <span>✓</span>
+                Fast Delivery
+              </div>
+
             </div>
 
-            <p className="form-intro">
-              Fill out this short form and
-              tell us what kind of website
-              you need.
-            </p>
-
-            <form onSubmit={handleSubmit}>
-
-              {/* NAME */}
-
-              <div className="field">
-                <label htmlFor="name">
-                  Your name
-                  <span>*</span>
-                </label>
-
-                <div className="input-wrap">
-                  <span className="input-icon">
-                    ◯
-                  </span>
-
-                  <input
-                    id="name"
-                    type="text"
-                    value={name}
-                    onChange={(event) =>
-                      setName(event.target.value)
-                    }
-                    placeholder="e.g. Rahul Sharma"
-                    maxLength={100}
-                    autoComplete="name"
-                    required
-                  />
-                </div>
-              </div>
-
-              {/* PHONE */}
-
-              <div className="field">
-                <label htmlFor="phone">
-                  Phone number
-                  <span>*</span>
-                </label>
-
-                <div className="input-wrap">
-                  <span className="country-code">
-                    +91
-                  </span>
-
-                  <input
-                    id="phone"
-                    type="tel"
-                    inputMode="numeric"
-                    value={phone}
-                    onChange={(event) =>
-                      setPhone(
-                        event.target.value
-                          .replace(/\D/g, "")
-                          .slice(0, 10)
-                      )
-                    }
-                    placeholder="9876543210"
-                    maxLength={10}
-                    autoComplete="tel"
-                    required
-                  />
-                </div>
-              </div>
-
-              {/* BUSINESS */}
-
-              <div className="field">
-                <label htmlFor="business">
-                  Your business
-                  <span>*</span>
-                </label>
-
-                <div className="input-wrap">
-                  <span className="input-icon">
-                    ▣
-                  </span>
-
-                  <input
-                    id="business"
-                    type="text"
-                    value={business}
-                    onChange={(event) =>
-                      setBusiness(event.target.value)
-                    }
-                    placeholder="e.g. Salon, Coaching, Clothing..."
-                    maxLength={150}
-                    required
-                  />
-                </div>
-              </div>
-
-              {/* REQUIREMENT */}
-
-              <div className="field">
-                <div className="label-row">
-                  <label htmlFor="need">
-                    What do you need?
-                  </label>
-
-                  <span>
-                    {need.length}/500
-                  </span>
-                </div>
-
-                <textarea
-                  id="need"
-                  value={need}
-                  onChange={(event) =>
-                    setNeed(event.target.value)
-                  }
-                  maxLength={500}
-                  placeholder="Tell us about your website requirements..."
-                  rows={4}
-                />
-              </div>
-
-              {/* SUBMIT */}
-
-              <button
-                type="submit"
-                className="main-submit"
-                disabled={loading}
-              >
-                {loading ? (
-                  <>
-                    <span className="spinner" />
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    Submit Request
-                    <span className="submit-arrow">
-                      →
-                    </span>
-                  </>
-                )}
-              </button>
-
-              {/* MESSAGE */}
-
-              {message && (
-                <div
-                  className={`form-message ${messageType}`}
-                  role="status"
-                  aria-live="polite"
-                >
-                  {message}
-                </div>
-              )}
-
-              <div className="privacy-note">
-                <span>🔒</span>
-
-                <p>
-                  Your information is kept private
-                  and used only to discuss your
-                  website requirements.
-                </p>
-              </div>
-            </form>
           </div>
+
+
+          {/* HERO PRICE CARD */}
+
+          <div className="hero-card">
+
+            <div className="price-card">
+
+              <div className="price-card-top">
+                <div className="small-label">
+                  WEBSITE PACKAGE
+                </div>
+
+                <h2>
+                  Business Website
+                </h2>
+
+                <div className="price">
+                  ₹3000
+                  <small> starting</small>
+                </div>
+              </div>
+
+              <div className="divider" />
+
+              <div className="package-list">
+
+                <div>
+                  <span>✓</span>
+                  Professional modern design
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Mobile responsive
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Business information
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Services / products section
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Contact section
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Deployment assistance
+                </div>
+
+              </div>
+
+              <a href="#request" className="card-button">
+                Submit Your Requirement
+              </a>
+
+            </div>
+
+          </div>
+
         </div>
       </section>
 
-      {/* TRUST BAR */}
+
+      {/* ================= TRUST BAR ================= */}
 
       <section className="trust-bar">
 
-        <div className="trust-box">
-          <div className="trust-round">
-            ✓
+        <div className="container trust-bar-inner">
+
+          <div>
+            Professional Design
           </div>
 
           <div>
-            <strong>
-              Professional design
-            </strong>
-
-            <span>
-              Built for your business
-            </span>
-          </div>
-        </div>
-
-        <div className="trust-divider" />
-
-        <div className="trust-box">
-          <div className="trust-round">
-            ⚡
+            Mobile First
           </div>
 
           <div>
-            <strong>
-              Fast & responsive
-            </strong>
-
-            <span>
-              Works on every device
-            </span>
-          </div>
-        </div>
-
-        <div className="trust-divider" />
-
-        <div className="trust-box">
-          <div className="trust-round">
-            ◇
+            Business Focused
           </div>
 
           <div>
-            <strong>
-              Modern technology
-            </strong>
-
-            <span>
-              Clean & reliable
-            </span>
-          </div>
-        </div>
-
-        <div className="trust-divider" />
-
-        <div className="trust-box">
-          <div className="trust-round">
-            ₹
+            Affordable Pricing
           </div>
 
-          <div>
-            <strong>
-              Starting at ₹3000
-            </strong>
-
-            <span>
-              Simple pricing
-            </span>
-          </div>
         </div>
 
       </section>
 
-      {/* FEATURES */}
 
-      <section
-        className="features-section"
-        id="features"
-      >
-        <div className="section-heading">
+      {/* ================= FEATURES ================= */}
 
-          <span className="section-pill">
-            WHAT YOU GET
-          </span>
+      <section className="section features-section">
 
-          <h2>
-            Everything you need to
-            <br />
-            <span>
-              look professional online.
-            </span>
-          </h2>
+        <div className="container">
 
-          <p>
-            We keep things simple. You tell us
-            what your business needs, and we
-            build a website around it.
-          </p>
+          <div className="section-heading">
 
-        </div>
-
-        <div className="feature-grid">
-
-          <div className="feature-card">
-            <div className="feature-icon blue">
-              ✦
+            <div className="section-label">
+              EVERYTHING YOU NEED
             </div>
 
-            <h3>
-              Modern Design
-            </h3>
+            <h2>
+              A website built for your business
+            </h2>
 
             <p>
-              A clean and premium design that
-              makes your business look
-              professional and trustworthy.
+              Your website should make it easy for customers to understand
+              your business, trust your brand and contact you.
             </p>
 
-            <div className="feature-number">
-              01
-            </div>
           </div>
 
-          <div className="feature-card">
-            <div className="feature-icon purple">
-              ◫
+
+          <div className="feature-grid">
+
+            <div className="feature-card">
+
+              <div className="feature-number">
+                01
+              </div>
+
+              <h3>
+                Professional Design
+              </h3>
+
+              <p>
+                A clean and modern website designed around your business,
+                services and brand identity.
+              </p>
+
             </div>
 
-            <h3>
-              Mobile Responsive
-            </h3>
 
-            <p>
-              Your website will look great on
-              phones, tablets and desktop screens.
-            </p>
+            <div className="feature-card">
 
-            <div className="feature-number">
-              02
-            </div>
-          </div>
+              <div className="feature-number">
+                02
+              </div>
 
-          <div className="feature-card">
-            <div className="feature-icon green">
-              ⚡
-            </div>
+              <h3>
+                Mobile Friendly
+              </h3>
 
-            <h3>
-              Fast Loading
-            </h3>
+              <p>
+                Your website will look good and remain easy to use on
+                phones, tablets and desktop computers.
+              </p>
 
-            <p>
-              Lightweight pages designed to load
-              quickly and give visitors a smooth
-              experience.
-            </p>
-
-            <div className="feature-number">
-              03
-            </div>
-          </div>
-
-          <div className="feature-card">
-            <div className="feature-icon orange">
-              ◉
             </div>
 
-            <h3>
-              Clear Information
-            </h3>
 
-            <p>
-              Present your services, business
-              details and important information
-              clearly.
-            </p>
+            <div className="feature-card">
 
-            <div className="feature-number">
-              04
-            </div>
-          </div>
+              <div className="feature-number">
+                03
+              </div>
 
-          <div className="feature-card">
-            <div className="feature-icon pink">
-              ◎
+              <h3>
+                Simple & Fast
+              </h3>
+
+              <p>
+                Focused pages that help your customers quickly find
+                information about your business.
+              </p>
+
             </div>
 
-            <h3>
-              Your Content
-            </h3>
-
-            <p>
-              Your business name, services,
-              images, information and contact
-              details.
-            </p>
-
-            <div className="feature-number">
-              05
-            </div>
-          </div>
-
-          <div className="feature-card">
-            <div className="feature-icon cyan">
-              ✓
-            </div>
-
-            <h3>
-              Simple Process
-            </h3>
-
-            <p>
-              No complicated technical process.
-              Just tell us what you need and
-              we'll guide you.
-            </p>
-
-            <div className="feature-number">
-              06
-            </div>
           </div>
 
         </div>
+
       </section>
 
-      {/* PROCESS */}
 
-      <section
-        className="process-section"
-        id="process"
-      >
-        <div className="process-inner">
+      {/* ================= WHY WEBSITE ================= */}
 
-          <div className="process-heading">
+      <section className="section why-section">
 
-            <span className="section-pill dark-pill">
-              HOW IT WORKS
-            </span>
+        <div className="container why-grid">
+
+          <div className="why-content">
+
+            <div className="section-label">
+              WHY A WEBSITE?
+            </div>
+
+            <h2>
+              Give your business a professional online presence.
+            </h2>
+
+            <p>
+              Social media is useful, but a website gives your business
+              a place that you control and that customers can visit
+              whenever they want.
+            </p>
+
+          </div>
+
+
+          <div className="why-list">
+
+            <div className="why-item">
+
+              <div className="why-icon">
+                01
+              </div>
+
+              <div>
+                <h3>
+                  Build Trust
+                </h3>
+
+                <p>
+                  Give potential customers a professional place to
+                  learn about your business.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div className="why-item">
+
+              <div className="why-icon">
+                02
+              </div>
+
+              <div>
+                <h3>
+                  Show Your Services
+                </h3>
+
+                <p>
+                  Clearly present your services, products, work and
+                  business information.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div className="why-item">
+
+              <div className="why-icon">
+                03
+              </div>
+
+              <div>
+                <h3>
+                  Make Contact Easy
+                </h3>
+
+                <p>
+                  Customers can quickly find the information they need
+                  to contact your business.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* ================= PROCESS ================= */}
+
+      <section className="section process-section">
+
+        <div className="container">
+
+          <div className="section-heading left">
+
+            <div className="section-label">
+              SIMPLE PROCESS
+            </div>
 
             <h2>
               From idea to website
-              <br />
-              <span>
-                in a few simple steps.
-              </span>
             </h2>
+
+            <p>
+              Getting your business online doesn't have to be complicated.
+            </p>
 
           </div>
 
+
           <div className="process-grid">
 
-            <div className="process-item">
+            <div className="process-card">
+
               <div className="process-number">
                 01
               </div>
 
               <h3>
-                Submit your request
+                Tell us what you need
               </h3>
 
               <p>
-                Fill out the short form with
-                your business details and
-                requirements.
+                Submit your business details and tell us what you want
+                your website to include.
               </p>
+
             </div>
 
-            <div className="process-line" />
 
-            <div className="process-item">
+            <div className="process-card">
+
               <div className="process-number">
                 02
               </div>
 
               <h3>
-                Discuss your requirements
+                We build your website
               </h3>
 
               <p>
-                We'll review your request and
-                understand exactly what you want.
+                Your website is designed around your business and the
+                information you provide.
               </p>
+
             </div>
 
-            <div className="process-line" />
 
-            <div className="process-item">
+            <div className="process-card">
+
               <div className="process-number">
                 03
               </div>
 
               <h3>
-                Get your website
+                Go online
               </h3>
 
               <p>
-                We build your website and make
-                it ready for your customers.
+                Once everything is ready, your website can be published
+                online for customers to visit.
               </p>
+
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-
-      <section className="final-cta">
-
-        <div className="cta-glow" />
-
-        <div className="cta-content">
-
-          <span className="section-pill">
-            READY TO START?
-          </span>
-
-          <h2>
-            Give your business
-            <br />
-            a professional home online.
-          </h2>
-
-          <p>
-            Tell us what you need and we'll
-            get back to you.
-          </p>
-
-          <a
-            href="#contact"
-            className="cta-button"
-          >
-            Submit Your Request
-            <b>→</b>
-          </a>
-
-          <small>
-            Websites starting from ₹3000
-          </small>
 
         </div>
+
       </section>
 
-      {/* FOOTER */}
 
-      <footer>
+      {/* ================= REQUEST FORM ================= */}
 
-        <div className="footer-top">
+      <section
+        id="request"
+        className="section request-section"
+      >
 
-          <div className="footer-brand">
+        <div className="container request-container">
 
-            <div className="logo">
-              <div className="logo-icon">
-                ✦
-              </div>
+          <div className="section-heading">
 
-              LeadStudio
+            <div className="section-label">
+              START YOUR PROJECT
             </div>
 
+            <h2>
+              Tell us about your business
+            </h2>
+
             <p>
-              Simple websites.
-              <br />
-              Professional presence.
+              Fill in the details below and we'll review your requirement.
             </p>
 
           </div>
 
-          <div className="footer-links">
-            <a href="#home">
-              Home
-            </a>
 
-            <a href="#features">
-              Features
-            </a>
-
-            <a href="#process">
-              How it works
-            </a>
-          </div>
-
-          <a
-            href="#contact"
-            className="footer-submit"
+          <form
+            onSubmit={handleSubmit}
+            className="request-form"
           >
-            Submit Request →
-          </a>
+
+            <div className="form-grid">
+
+              {/* NAME */}
+
+              <div className="form-field">
+
+                <label htmlFor="name">
+                  Your Name
+                </label>
+
+                <input
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter your name"
+                  autoComplete="name"
+                />
+
+              </div>
+
+
+              {/* PHONE */}
+
+              <div className="form-field">
+
+                <label htmlFor="phone">
+                  Phone Number
+                </label>
+
+                <input
+                  id="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="10-digit phone number"
+                  inputMode="numeric"
+                  maxLength={10}
+                  autoComplete="tel"
+                />
+
+              </div>
+
+
+              {/* BUSINESS */}
+
+              <div className="form-field full">
+
+                <label htmlFor="business">
+                  Business Name
+                </label>
+
+                <input
+                  id="business"
+                  type="text"
+                  value={business}
+                  onChange={(e) => setBusiness(e.target.value)}
+                  placeholder="Your business name"
+                  autoComplete="organization"
+                />
+
+              </div>
+
+
+              {/* NEED */}
+
+              <div className="form-field full">
+
+                <label htmlFor="need">
+                  What do you need?
+                </label>
+
+                <textarea
+                  id="need"
+                  value={need}
+                  onChange={(e) => setNeed(e.target.value)}
+                  placeholder="Tell us about the website you want..."
+                  rows={6}
+                  maxLength={500}
+                />
+
+                <div className="character-count">
+                  {need.length}/500
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* MESSAGE */}
+
+            {message && (
+
+              <div
+                className={`form-message ${
+                  messageType === "success"
+                    ? "success"
+                    : "error"
+                }`}
+              >
+                {message}
+              </div>
+
+            )}
+
+
+            {/* SUBMIT */}
+
+            <button
+              type="submit"
+              className="main-submit"
+              disabled={loading}
+            >
+              {loading
+                ? "Submitting..."
+                : "Submit Request"}
+            </button>
+
+
+            <p className="form-note">
+              We'll review your requirement and contact you.
+            </p>
+
+          </form>
 
         </div>
 
-        <div className="footer-bottom">
+      </section>
 
-          <span>
-            © 2026 LeadStudio. All rights reserved.
-          </span>
 
-          <span>
-            Built for growing businesses.
-          </span>
+      {/* ================= FINAL CTA ================= */}
+
+      <section className="final-cta">
+
+        <div className="container">
+
+          <div className="final-cta-box">
+
+            <div className="section-label">
+              GET STARTED
+            </div>
+
+            <h2>
+              Ready to build your website?
+            </h2>
+
+            <p>
+              Give your business a professional online presence
+              starting at ₹3000.
+            </p>
+
+            <a
+              href="#request"
+              className="cta-button"
+            >
+              Submit Your Requirement
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* ================= FOOTER ================= */}
+
+      <footer className="footer">
+
+        <div className="container">
+
+          <div className="footer-main">
+
+            <div className="footer-brand">
+
+              <a href="/" className="footer-logo">
+                LeadStudio
+              </a>
+
+              <p>
+                Professional websites for growing businesses.
+              </p>
+
+            </div>
+
+
+            {/* ADMIN LOGIN AT THE VERY BOTTOM */}
+
+            <a
+              href="/admin/login"
+              className="admin-login"
+            >
+              Admin Login
+            </a>
+
+          </div>
+
+
+          <div className="footer-bottom">
+
+            <span>
+              © 2026 LeadStudio. All rights reserved.
+            </span>
+
+          </div>
 
         </div>
 
       </footer>
+
     </main>
   );
 }
